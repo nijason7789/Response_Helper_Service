@@ -6,4 +6,4 @@ const moreComments = (previousRecommendation) => {
     return prompt
 }
 
-module.exports = moreComments;
+export default moreComments

@@ -6,4 +6,4 @@ const commentSuggest = (originalComment) =>{
     return prompt
 }
 
-module.exports = commentSuggest;
+export default commentSuggest

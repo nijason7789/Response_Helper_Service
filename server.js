@@ -1,4 +1,4 @@
-import {express} from express
+import express from 'express'
 import commentSuggest from './prompts/commentSuggests.js'
 import moreComments from './prompts/moreComments.js'
 
