@@ -11,8 +11,16 @@ const getOpenAIResponse = async (prompt) => {
     model: "gpt-4o-mini",
   });
   console.log(completion.choices[0])
-  console.log(completion.choices[0].message.content)
-  return completion.choices[0].message.content;
+  const rawResponseData = completion.choices[0].message.content
+  console.log(rawResponseData)
+  let jsonResponseData;
+  try{
+        jsonResponseData = JSON.parse(rawResponseData);
+    } catch (error) {
+        console.error('Error parsing JSON response:', error);
+        throw new Error('Invalid JSON response from OpenAI API');
+  }
+  return jsonResponseData;
 };
 
 export default getOpenAIResponse ;
