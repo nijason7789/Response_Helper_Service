@@ -10,13 +10,13 @@ const commentSuggest = (originalComment) =>{
     回復的格式請遵循以下 json format，且在回覆時請以讀者留言的語言進行回復:
     
     {
-        "translation_0":"Chinese translation of original comment (fill with null if the language of original comment is Chinese)",
+        "translation_0":"Traditional Chinese translation of original comment",
         "suggestion_1":"comment suggestions example1 ~~",
-        "translation_1":"Chinese translation of suggestion1 ~~",
+        "translation_1":"Traditional Chinese translation of suggestion1 ~~",
         "suggestion_2":"comment suggestions example2 ~~",
-        "translation_2":"Chinese translation of suggestion2 ~~",
+        "translation_2":"Traditional Chinese translation of suggestion2 ~~",
         "suggestion_3":"comment suggestions example3 ~~",
-        "translation_3":"Chinese translation of suggestion3 ~~ "
+        "translation_3":"Traditional Chinese translation of suggestion3 ~~ "
     }
 
     `
