@@ -10,8 +10,9 @@ const getOpenAIResponse = async (prompt) => {
     messages: [{ role: "user", content: prompt }],
     model: "gpt-4o-mini",
   });
-
-  return completion.choices[0];
+  console.log(completion.choices[0])
+  console.log(completion.choices[0].message.content)
+  return completion.choices[0].message.content;
 };
 
-export { getOpenAIResponse };
+export default getOpenAIResponse ;
