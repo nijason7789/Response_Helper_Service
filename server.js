@@ -31,7 +31,7 @@ app.post('/api/moreComments', async (req, res) => {
       console.log(`recieved, prompt = ${prompt}`)
       const response = await retryRequest(getOpenAIResponse,[prompt], 3);
       console.log(`response = ${JSON.stringify(response)}`);
-      res.json(response.data);
+      res.json(response);
     } catch (error) {
       res.status(500).send('Error processing request');
     }
