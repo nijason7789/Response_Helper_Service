@@ -26,10 +26,12 @@ app.post('/api/openai', async (req, res) => {
 
 app.post('/api/moreComments', async (req, res) => {
     try {
-      const { previousRecommendation } = req.body;
-      const prompt = moreComments(previousRecommendation);
-      const response = await getOpenAIResponse(prompt);
-      res.json(response.data);
+      const needMoreComments = req.body;
+      const prompt = moreComments(JSON.stringify(needMoreComments));
+      console.log(`recieved, prompt = ${prompt}`)
+      const response = await retryRequest(getOpenAIResponse,[prompt], 3);
+      console.log(`response = ${JSON.stringify(response)}`);
+      res.json(response);
     } catch (error) {
       res.status(500).send('Error processing request');
     }
@@ -40,3 +42,14 @@ app.listen(port, () => {
 });
 
 
+/*
+
+mocked API format: 
+{
+  "originalComment":"",
+  "Suggestion_1":"",
+  "Suggestion_2":"",
+  "Suggestion_3":""
+}
+
+*/
