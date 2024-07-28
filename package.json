@@ -1,6 +1,6 @@
 {
   "name": "response_helper_service",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Server side of Response helper chrome extension.",
   "main": "server.js",
   "scripts": {
