@@ -37,6 +37,16 @@ app.post('/api/moreComments', async (req, res) => {
     }
   });
 
+app.get('/api/wakeup', async (req, res) =>{
+  const clientIp = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+  try{
+    console.log(`Wake up signal received from IP: ${clientIp}`);
+    res.json({ message: 'Service is waking up' })
+  } catch (error){
+    res.status(500).send('Error processing request');
+  }
+})
+
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
