@@ -1,8 +1,9 @@
 import fetch from "node-fetch";
+const apiDomain = 'https://response-helper-service.onrender.com'
 
 const keepAlive = async () => {
   try {
-    const response = await fetch('http://localhost:3000/api/wakeup');
+    const response = await fetch(`${apiDomain}/api/wakeup`);
     const data = await response.text();
     console.log('Pinged API successfully:', data);
   } catch (error) {
@@ -10,4 +11,4 @@ const keepAlive = async () => {
   }
 };
 
-setInterval(keepAlive, 60000);
+await keepAlive();
