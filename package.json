@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "jest",
-    "start": "concurrently \"node server.js\" \"node ./tools/keepAlive.js\""
+    "start": "node server.js"
   },
   "type": "module",
   "keywords": [],
