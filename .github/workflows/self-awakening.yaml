@@ -1,11 +1,8 @@
 name: self-awakening
 
 on:
-    # schedule:
-    #   - cron: '*/15 * * * *'
-    pull_request:
-        branches:
-            'main'
+    schedule:
+      - cron: '*/15 * * * *'
 
 jobs:
     Keep-Alive:
