@@ -1,7 +1,7 @@
 const JsonTruncator = async (response) => {
     const match = response.match(/```json([\s\S]*?)```/);
   
-    if (match && match[1]) {
+    if (match?.[1]) {
       try {
         const jsonString = match[1].trim();
         const parsedJSON = JSON.parse(jsonString);

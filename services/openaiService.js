@@ -20,7 +20,7 @@ const getOpenAIResponse = async (prompt) => {
     } catch (error) {
         console.log('Error parsing JSON response, trying to parse...');
         try{
-          jsonResponseData = JsonTruncator(rawResponseData);
+          jsonResponseData = await JsonTruncator(rawResponseData);
         } catch (error) {
             console.error('Failed truncating to Json format')
             throw new Error('Invalid JSON response from OpenAI API');
