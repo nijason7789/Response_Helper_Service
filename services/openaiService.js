@@ -1,5 +1,6 @@
 import OpenAI from "openai";
 import 'dotenv/config';
+import JsonTruncator from "../tools/jsonTruncator.js";
 
 const openai = new OpenAI({ 
     apiKey: process.env.OPENAI_API_KEY 
@@ -17,8 +18,13 @@ const getOpenAIResponse = async (prompt) => {
   try{
         jsonResponseData = JSON.parse(rawResponseData);
     } catch (error) {
-        console.error('Error parsing JSON response:', error);
-        throw new Error('Invalid JSON response from OpenAI API');
+        console.log('Error parsing JSON response, trying to parse...');
+        try{
+          jsonResponseData = await JsonTruncator(rawResponseData);
+        } catch (error) {
+            console.error('Failed truncating to Json format')
+            throw new Error('Invalid JSON response from OpenAI API');
+          } 
   }
   return jsonResponseData;
 };
