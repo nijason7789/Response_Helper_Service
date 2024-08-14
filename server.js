@@ -3,6 +3,7 @@ import cors from 'cors'
 import commentSuggest from './prompts/commentSuggests.js'
 import moreComments from './prompts/moreComments.js'
 import getOpenAIResponse from './services/openaiService.js';
+import advice from './prompts/editor.js';
 import retryRequest from './tools/retryRequest.js';
 
 const app = express();
@@ -47,6 +48,19 @@ app.get('/api/wakeup', async (req, res) =>{
     res.json({ message: 'Service is waking up' })
   } catch (error){
     console.error(`Error processing wakeup request from IP: ${clientIp}`, error);
+    res.status(500).send('Error processing request');
+  }
+})
+
+app.post('/api/advice', async (req, res) =>{
+  try {
+    const {fromLanguage, nativeComment, toLanguage, translatedComment} = req.body;
+    const prompt = advice(fromLanguage, nativeComment, toLanguage, translatedComment);
+    console.log(`recieved, prompt = ${prompt}`)
+    const response = await retryRequest(getOpenAIResponse,[prompt], 3);
+    console.log(`response = ${JSON.stringify(response)}`);
+    res.json(response);
+  } catch (error) {
     res.status(500).send('Error processing request');
   }
 })
