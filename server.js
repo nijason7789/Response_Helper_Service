@@ -4,7 +4,7 @@ import apiRoutes from './routes/api.js';
 import { errorHandler, requestLogger } from './middleware/index.js';
 
 const app = express();
-const port = 8888;
+const port = 3000;
 
 app.use(cors());
 app.use(express.json());
